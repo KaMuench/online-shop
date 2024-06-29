@@ -1,0 +1,17 @@
+Computer;CIX 4;Acer;499.99;25;8;512;Intel Core i5;Nvidea Redeon RTX;true;false;kein Display;
+Computer;OptiPlex 3080;Dell;299.99;42;16;1024;Intel Core i7;AMD Radeon RX Vega;true;false;kein Display;
+Computer;ProDesk D7;HP;449.99;36;8;512;AMD Ryzen 7 5800X;GeForce RTX 3060;true;false;kein Display;
+Computer;DTD 13;KennyBooks;797.99;0;8;512;Intel Core i5;Nvidea Redeon RTX;true;false;kein Display;
+Notebook;ThinkPad X1;Lenovo;439.99;20;8;512;Intel Core i5;Nvidea Redeon RTX;false;true;14 Zoll;
+Notebook;Surface ;Microsoft;699.99;0;8;256;Intel Core i7;UHD Grafik;false;true;15 Zoll;
+Notebook;AS X12;Asus;419.99;10;4;512;Intel Core i7;Nvidea Redeon RTX;false;true;14 Zoll;
+Maus;M185;Logitech;29.99;14;kabellos;1000 dpi;3;
+Maus;Surface M;Microsoft;42.99;31;kabellos;1000 dpi;1;
+Maus;RZ01;Razer;129.99;32;kabellgebunden;1600 dpi;5;
+Tastatur;MK270;Logitech;29.99;20;kabellos;QWERTZ;
+Tastatur;Ornata V2;Razer;67.99;30;kabelgebunden;QWERTZ;
+Tastatur;MK470;Logitech;38.99;40;kabellos;QWERTZ;
+Tastatur;MK210;Logitech;38.99;40;kabellos;QWERTZ;
+Display;L24;Lenovo;249.99;50;27 Zoll;5ms Reaktionszeit;75 Hz;
+Display;Optix G32;MSI;269.99;54;31,5 Zoll;1ms Reaktionszeit;165 Hz;
+Display;Nitro QG241;Acer;139.0;0;23,8 Zoll;1ms Reaktionszeit;75 Hz;

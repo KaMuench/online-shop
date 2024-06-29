@@ -1,0 +1,5 @@
+Paypal;baka@skkss.de;
+Konto;DE12345123451234566827;
+null;
+null;
+null;

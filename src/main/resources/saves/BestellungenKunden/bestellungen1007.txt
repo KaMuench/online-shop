@@ -1,0 +1,2 @@
+Computer;CIX 4;Acer;499.99;1;8;512;Intel Core i5;Nvidea Redeon RTX;true;false;kein Display;
+Bestellung;true;2;22;3;0;2022;11;

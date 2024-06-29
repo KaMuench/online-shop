@@ -27,7 +27,7 @@ public class OnlineShopDatenbank {
 	public static Katalog ladeKatalog() {
 		Katalog retKatalog = new Katalog();
 
-		try (BufferedReader dateiLeser = new BufferedReader(new FileReader(new File("./saves/produktListe.txt")))) {
+		try (BufferedReader dateiLeser = new BufferedReader(new FileReader("saves/produktListe.txt"))) {
 			String zeile;
 			while ((zeile = dateiLeser.readLine()) != null) {
 				String[] datenProdukt = zeile.split(";");
@@ -69,6 +69,7 @@ public class OnlineShopDatenbank {
 			}
 			return retKatalog;
 		} catch (IOException e) {
+			e.printStackTrace();
 			return null;
 		}
 
@@ -78,7 +79,7 @@ public class OnlineShopDatenbank {
 		ArrayList<Bestellungen> retArrayList = new ArrayList<>();
 
 		try (BufferedReader dateiLeser = new BufferedReader(
-				new FileReader(new File("./saves/BestellungenKunden/bestellungen" + kunde.getKennNummer() + ".txt")))) {
+				new FileReader(new File("saves/BestellungenKunden/bestellungen" + kunde.getKennNummer() + ".txt")))) {
 			String zeile;
 			ArrayList<Produkt> retProdukte = new ArrayList<>();
 			while ((zeile = dateiLeser.readLine()) != null) {
@@ -133,7 +134,7 @@ public class OnlineShopDatenbank {
 			}
 			return retArrayList;
 		} catch (IOException e) {
-
+			e.printStackTrace();
 			return retArrayList;
 		}
 
@@ -142,7 +143,7 @@ public class OnlineShopDatenbank {
 	public static TreeMap<Integer, Kunde> ladeKundenliste() {
 		TreeMap<Integer, Kunde> retTreeMap = new TreeMap<>();
 
-		try (BufferedReader dateiLeser = new BufferedReader(new FileReader(new File("./saves/kundenListe.txt")))) {
+		try (BufferedReader dateiLeser = new BufferedReader(new FileReader(new File("saves/kundenListe.txt")))) {
 			String zeile;
 			while ((zeile = dateiLeser.readLine()) != null) {
 				String[] datenKunde = zeile.split(";");
@@ -165,6 +166,7 @@ public class OnlineShopDatenbank {
 
 			return retTreeMap;
 		} catch (IOException e) {
+			e.printStackTrace();
 			return null;
 		}
 
@@ -174,7 +176,7 @@ public class OnlineShopDatenbank {
 		Zahlungsmethode[] retZahlungsmethode = new Zahlungsmethode[5];
 
 		try (BufferedReader dateiLeser = new BufferedReader(new FileReader(
-				new File("./saves/ZahlungsmethodenKunden/zahlungsmethoden" + kunde.getKennNummer() + ".txt")))) {
+				new File("saves/ZahlungsmethodenKunden/zahlungsmethoden" + kunde.getKennNummer() + ".txt")))) {
 			String zeile;
 			byte index = 0;
 			while ((zeile = dateiLeser.readLine()) != null) {
@@ -190,6 +192,7 @@ public class OnlineShopDatenbank {
 			}
 			return retZahlungsmethode;
 		} catch (IOException e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -197,7 +200,7 @@ public class OnlineShopDatenbank {
 	public static void speichernKatalog(Katalog katalog) {
 
 		try (BufferedWriter dateiSchreiber = new BufferedWriter(
-				new FileWriter(new File("./saves/produktListe.txt"), false))) {
+				new FileWriter(new File("saves/produktListe.txt"), false))) {
 
 			int keyComputer = Computer.getArtNumBereich() + 1;
 			int keyNotebooks = Notebook.getARTNUMBEREICH() + 1;
@@ -238,7 +241,7 @@ public class OnlineShopDatenbank {
 
 	public static void speichernBestellungen(Kunde kunde) {
 		try (BufferedWriter dateiSchreiber = new BufferedWriter(new FileWriter(
-				new File("./saves/BestellungenKunden/bestellungen" + kunde.getKennNummer() + ".txt"), false))) {
+				new File("saves/BestellungenKunden/bestellungen" + kunde.getKennNummer() + ".txt"), false))) {
 			for (Bestellungen b : kunde.getBestellVerlauf()) {
 				for (Produkt p : b.getINHALT()) {
 					dateiSchreiber.write(p.speichernInTxt() + "\n");
@@ -253,7 +256,7 @@ public class OnlineShopDatenbank {
 
 	public static void speichernKundenliste(Kundenverwaltung kundenverwaltung) {
 		try (BufferedWriter dateiSchreiber = new BufferedWriter(
-				new FileWriter(new File("./saves/kundenListe.txt"), false))) {
+				new FileWriter(new File("saves/kundenListe.txt"), false))) {
 
 			int keyKennNummerbereich = Kunde.getKennnummerbereich() + 1;
 
@@ -272,7 +275,7 @@ public class OnlineShopDatenbank {
 
 	public static void speichernZahlungsmethoden(Kunde kunde) {
 		try (BufferedWriter dateiSchreiber = new BufferedWriter(new FileWriter(
-				new File("./saves/ZahlungsmethodenKunden/zahlungsmethoden" + kunde.getKennNummer() + ".txt"), false))) {
+				new File("saves/ZahlungsmethodenKunden/zahlungsmethoden" + kunde.getKennNummer() + ".txt"), false))) {
 			for (Zahlungsmethode z : kunde.getZahlungsmethode()) {
 				if (z == null) {
 					dateiSchreiber.write("null;\n");

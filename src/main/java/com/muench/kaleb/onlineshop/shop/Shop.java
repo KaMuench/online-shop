@@ -1,7 +1,7 @@
 /**
  * ###   "OnlineShop" class: shop   ###
  * Das ist die Hauptklasse des OnlineShops, welche die Main Methode besitzt.
- * Von hier aus k�nnen alle Untermen�s des Shops aufgerufen werden.
+ * Von hier aus k?nnen alle Untermen?s des Shops aufgerufen werden.
  * Also der Warenkorb, die Accountverwaltung, die Kasse, der Katalog, ...
  * 
  * @author Kaleb Muench
@@ -20,66 +20,62 @@ import com.muench.kaleb.onlineshop.io.OnlineShopDatenbank;
 import com.muench.kaleb.onlineshop.entities.produkt.*;
 
 public class Shop {
-	/*
-	 * 
-	 * Katalog des Shops
-	 */
-	private static Katalog shopKatalog = new Katalog();
-	/*
-	 * ### Warenkorb des Shops ###
-	 */
-	private static Warenkorb shopWarenkorb = new Warenkorb();
-	// Die Kudenverwaltung des Shops
-	private static Kundenverwaltung shopKundenverwaltung = new Kundenverwaltung();
+
+	private static Katalog shopKatalog = new Katalog();								// Katalog des Shops
+	private static Warenkorb shopWarenkorb = new Warenkorb();						// Warenkorb des Shops
+	private static Kundenverwaltung shopKundenverwaltung = new Kundenverwaltung();	// Die Kundenverwaltung des Shops
 	private static Kasse shopKasse;
 	private static BenutzerEingabe nutzerEingabeS = new BenutzerEingabe();
+
 	// Array mit Infoleisten Benachrichtigungen
-	private static final String[] BENACHRICHTIGUNGEN_SHOP = { "Ung�ltige Eingabe! Bitte geben Sie erneut ein!",
-			"Letzte Seite erreicht!", "Erste Seite erreicht!" };
+	private static final String[] BENACHRICHTIGUNGEN_SHOP = {
+			"Ungültige Eingabe! Bitte geben Sie erneut ein!",
+			"Letzte Seite erreicht!",
+			"Erste Seite erreicht!" };
 
 	private static String benachrichtigungSE = BENACHRICHTIGUNGEN_SHOP[0];
 
 	private static final String[][] OPTIONSLEISTEN_SHOP = {
-			{ "0. Startmen�:", "Um das Startmen� anzeigen zu lassen, geben Sie die 0 ein.", "1. Katalog:",
+			{ "0. Startmenü:",
+					"Um das Startmenü anzeigen zu lassen, geben Sie die 0 ein.", "1. Katalog:",
 					"Um den Katalog anzuschauen,  geben Sie die 1 ein.", "2. Accounteinstellungen:",
 					"Um Ihren Account zu verwalten, geben Sie die 2 ein.", "3. Kasse:",
 					"Um zur Kasse zu gelangen, geben Sie die 3 ein.", "9. Beenden:",
 					"Um das Programm zu beenden, geben Sie die 9 ein." },
-			{ "0. Startmen�", "Um das Startmen� anzeigen zu lassen, geben Sie die 0 ein.", "1. Katalog Men�:",
-					"Um zum Katalog Men� zu kommen, geben Sie die 1 ein.", "2. Computer:",
+			{ "0. Startmenü",
+					"Um das Startmenü anzeigen zu lassen, geben Sie die 0 ein.", "1. Katalog Menü:",
+					"Um zum Katalog Menü zu kommen, geben Sie die 1 ein.", "2. Computer:",
 					"Um die Computer anzuschauen, geben Sie die 2 ein.", "3. Notebooks:",
 					"Um die Notebooks anzuschauen, geben Sie die 3 ein.", "4. Smartphones:",
-					"Um die Smartphones anzuschauen, geben Sie die 4 ein.", "5. Computer-M�use:",
-					"Um Computer-M�use anzuschauen, geben Sie die 5 ein.", "6. Computer-Tastaturen:",
+					"Um die Smartphones anzuschauen, geben Sie die 4 ein.", "5. Computer-M?use:",
+					"Um Computer-Mäuse anzuschauen, geben Sie die 5 ein.", "6. Computer-Tastaturen:",
 					"Um Computer-Tastaturen anzuschauen, geben Sie die 6 ein.", "7. Bildschirme:",
-					"Um Computer-Bildschirme anzuschauen, geben Sie die 7 ein.", "9. Zur�ck:",
-					"Um zur Startseite zur�ckzukehren, geben Sie die 9 ein." },
-			{ "0. Beenden:", "Um das Programm zu beenden, geben Sie die 0 ein.", "1. Vorname:",
+					"Um Computer-Bildschirme anzuschauen, geben Sie die 7 ein.", "9. Zurück:",
+					"Um zur Startseite zurückzukehren, geben Sie die 9 ein." },
+			{ "0. Beenden:",
+					"Um das Programm zu beenden, geben Sie die 0 ein.", "1. Vorname:",
 					"Um die Kunden nach ihren Vorname zu sortieren, geben Sie die 1 ein.", "2. Nachname:",
 					"Um die Kunden nach ihren Vorname zu sortieren, geben Sie die 2 ein.", "3. Kundennummer:",
 					"Um die Kunden nach ihren Vorname zu sortieren, geben Sie die 3 ein.", "4. Benutzername:",
 					"Um die Kunden nach ihren Vorname zu sortieren, geben Sie die 4 ein.", "5. Geburtstag:",
-					"Um die Kunden nach ihren Vorname zu sortieren, geben Sie die 5 ein.", "8. N�chste Seite:",
-					"Um zur n�chsten Seite zu bl�ttern, geben Sie die 8 ein.", "9 Zur�ck bl�ttern:",
-					"Um zur�ck zu bl�ttern, geben Sie die 9 ein. " } };
+					"Um die Kunden nach ihren Vorname zu sortieren, geben Sie die 5 ein.", "8. Nächste Seite:",
+					"Um zur nächsten Seite zu blättern, geben Sie die 8 ein.", "9 Zurück blättern:",
+					"Um zurück zu blättern, geben Sie die 9 ein. " } };
 
-	/**
-	 * ### fenster ### Beinhaltet die Zahl des akutell ge�ffnetten Fensters
-	 */
-	private static int fenster = 0;
+
+	private static int fenster = 0;		// Beinhaltet die Zahl des aktuell geöffneten Fensters
 	private static int fenster2 = 0;
 	/**
-	 * ### wiederholung ### Falls das Fenster durch eine falsche Benutzereingabe
-	 * erneut ausgef�hrt wird, wird "wiederholung" auf true gesetzt. Dies erm�glicht
+	 * Falls das Fenster durch eine falsche Benutzereingabe
+	 * erneut ausgeführt wird, wird "wiederholung" auf true gesetzt. Dies ermöglicht
 	 * eine "Design.infoLeiste" Fehlermeldung die eine neue Benutzereingabe
-	 * auffordert, bei der das �brige Fenster aber gleich aussieht.
+	 * auffordert, bei der das übrige Fenster aber gleich aussieht.
 	 */
 	private static boolean wiederholung = false;
 	private static boolean ladeSaves = false;
 
 	/**
-	 * ### anzeigenStartseitEbene ### Diese Methode soll die einzelnen Seiten des
-	 * Shops, der ersten Ebene ausgeben.
+	 * Diese Methode soll die einzelnen Seiten des Shops, der ersten Ebene ausgeben.
 	 * 
 	 * Startseiten Ebene: Katalog Accounteinstellungen Warenkorb Wunschliste Beenden
 	 * 
@@ -121,9 +117,9 @@ public class Shop {
 				// Kasse
 				if (shopKundenverwaltung.isEingeloggt()) {
 					/*
-					 * Erst wenn jemand eingeloggt ist, kann die Kasse ge�ffnet werden. Damit die
+					 * Erst wenn jemand eingeloggt ist, kann die Kasse geöffnet werden. Damit die
 					 * Referenz der kasseKunde auf das Objekt curKunde der Kundenverwaltung zeigt,
-					 * muss jedes mal wenn die Kasse ge�ffnet wird ein neues Objekt Kasse
+					 * muss jedes mal wenn die Kasse ge?ffnet wird ein neues Objekt Kasse
 					 * instanziiert werden.
 					 * 
 					 */
@@ -170,9 +166,9 @@ public class Shop {
 			window.ausgabeBlock("Werbetext", 26);
 			window.ausgabeZeile();
 			window.trennStrich();
-			window.ausgabeZeile("Auswahlm�glichkeiten:");
+			window.ausgabeZeile("Auswahlmöglichkeiten:");
 			window.trennStrich();
-			// Gibt die Auswahlm�glichkeiten auf dem Fenster aus.
+			// Gibt die Auswahlm?glichkeiten auf dem Fenster aus.
 			for (int index1 = 0, index2 = 0; index2 < OPTIONSLEISTEN_SHOP[index1].length; index2 += 2) {
 				window.ausgabeZeileL(OPTIONSLEISTEN_SHOP[index1][index2], OPTIONSLEISTEN_SHOP[index1][index2 + 1]);
 			}
@@ -193,9 +189,9 @@ public class Shop {
 	/*
 	 * ### anzeigenKatalogEbene ###
 	 * 
-	 * Diese Methode navigiert zwischen den Shop Fenstern die zum Katalog geh�hren.
+	 * Diese Methode navigiert zwischen den Shop Fenstern die zum Katalog geh?hren.
 	 * 
-	 * Katalog Ebene: Katalog Men� Computer Notebooks Smartphones Zubeh�hr Zur�ck
+	 * Katalog Ebene: Katalog Men? Computer Notebooks Smartphones Zubeh?hr Zur?ck
 	 * 
 	 * @param page Jeder Integer von 0 bis 9 zeigt eine andere Seite an.
 	 */
@@ -213,9 +209,9 @@ public class Shop {
 				window.ausgabeBlock("Werbetext", 22);
 				window.ausgabeZeile();
 				window.trennStrich();
-				window.ausgabeZeile("Auswahlm�glichkeiten:");
+				window.ausgabeZeile("Auswahlmöglichkeiten:");
 				window.trennStrich();
-				// Gibt die Auswahlm�glichkeiten auf dem Fenster aus.
+				// Gibt die Auswahlmöglichkeiten auf dem Fenster aus.
 				for (int index1 = 1, index2 = 0; index2 < OPTIONSLEISTEN_SHOP[index1].length; index2 += 2) {
 					window.ausgabeZeileL(OPTIONSLEISTEN_SHOP[index1][index2], OPTIONSLEISTEN_SHOP[index1][index2 + 1]);
 				}
@@ -244,9 +240,9 @@ public class Shop {
 				usrInputKE = 1;
 				break;
 			}
-			// Fenster, Katalog Ebene: Computer-M�use
+			// Fenster, Katalog Ebene: Computer-M?use
 			case 5: {
-				shopKatalog.blaetternKatalog(Maus.getArtnumbereich(), "Computer-M�use");
+				shopKatalog.blaetternKatalog(Maus.getArtnumbereich(), "Computer-Mäuse");
 				usrInputKE = 1;
 				break;
 			}
@@ -262,12 +258,12 @@ public class Shop {
 				usrInputKE = 1;
 				break;
 			}
-			// Kehrt zum Startmen� zur�ck.
+			// Kehrt zum Startmen? zur?ck.
 			case 9: {
 				weiterKE = false;
 				break;
 			}
-			// Kehrt zum Startmen� zur�ck.
+			// Kehrt zum Startmen? zur?ck.
 			case 0: {
 				weiterKE = false;
 				break;
@@ -279,11 +275,9 @@ public class Shop {
 
 	}
 
-	/**
-	 * ### setupShop ###
-	 * 
-	 * Initialisiert eine Shop Situation. Erstellt Produkte. F�llt den Katalog mit
-	 * Produkten. Erstellt Kunden f�llt die Kundenliste. Alternativ k�nnen auch die
+	/*
+	 * Initialisiert eine Shop Situation. Erstellt Produkte. Füllt den Katalog mit
+	 * Produkten. Erstellt Kunden füllt die Kundenliste. Alternativ können auch die
 	 * saves geladen werden.
 	 * 
 	 * @param OnlineShopDatab gibt an ob das Programm mit saves oder ohne gestartet
@@ -302,14 +296,14 @@ public class Shop {
 	}
 
 	/*
-	 * Methode die das Programm startet. Zuerst kann man ausw�hlen, ob man als
-	 * Mitarbeiter oder als Kunde starten m�chte. Danach kann man ausw�hlen ob man
-	 * die saves laden m�chte.
+	 * Methode die das Programm startet. Zuerst kann man auswählen, ob man als
+	 * Mitarbeiter oder als Kunde starten möchte. Danach kann man auswählen ob man
+	 * die saves laden möchte.
 	 */
 	public static void starteProgramm() {
 		int nutzerEingabeShop = 0;
 		while (true) {
-			System.out.println("W�hlen Sie aus, ob Sie das Program als Mitarbeiter oder Kunde starten wollen: ");
+			System.out.println("Wählen Sie aus, ob Sie das Program als Mitarbeiter oder Kunde starten wollen: ");
 			System.out.println();
 			System.out.println("Mitarbeiter: 1");
 			System.out.println("Kunde:       2");
@@ -325,10 +319,10 @@ public class Shop {
 					nutzerEingabeShop = nutzerEingabeS.getUsrInput(0);
 					if (nutzerEingabeShop == 1) {
 						ladeSaves = true;
-						setupShop(ladeSaves);
+						setupShop(true);
 					} else if (nutzerEingabeShop == 2) {
 						ladeSaves = false;
-						setupShop(ladeSaves);
+						setupShop(false);
 					} else {
 						System.out.println("Bitte geben Sie 1, 2 ein!");
 					}
@@ -344,11 +338,11 @@ public class Shop {
 					nutzerEingabeShop = nutzerEingabeS.getUsrInput(0);
 					if (nutzerEingabeShop == 1) {
 						ladeSaves = true;
-						setupShop(ladeSaves);
+						setupShop(true);
 						break;
 					} else if (nutzerEingabeShop == 2) {
 						ladeSaves = false;
-						setupShop(ladeSaves);
+						setupShop(false);
 						break;
 					} else {
 						System.out.println("Bitte geben Sie 1, 2 ein!");
@@ -378,8 +372,8 @@ public class Shop {
 		Design oeffMitarbeiterMA = new Design();
 		BenutzerEingabe nutzerEingabeMA = new BenutzerEingabe();
 
-		// Die ArrayList in der die shopKundenliste �bergeben wird.
-		// Dies erm�glicht dann die Kunden zu sortieren.
+		// Die ArrayList in der die shopKundenliste ?bergeben wird.
+		// Dies erm?glicht dann die Kunden zu sortieren.
 		ArrayList<Kunde> kundenListeMA = new ArrayList<>();
 		int keyKundenlisteMA = Kunde.getKennnummerbereich() + 1;
 		while (shopKundenverwaltung.getKundenliste().containsKey(keyKundenlisteMA)) {
@@ -389,7 +383,7 @@ public class Shop {
 
 		/*
 		 * Die Anzahl der Kunden die in der aktuelle Runde ausgegeben wurde Je nachdem
-		 * wie viele Zeilen es braucht um ein Kunde auszugeben, k�nnen mehrere PKunden
+		 * wie viele Zeilen es braucht um ein Kunde auszugeben, k?nnen mehrere PKunden
 		 * pro Schleifen-Durchlauf ausgegeben werden. Wurden z.B. 3 Kunden pro Seite
 		 * ausgegeben ist durchlauf = 3.
 		 */
@@ -409,8 +403,8 @@ public class Shop {
 		// Die Zeilen die pro Kundenausgabe genutzt wurden
 		byte benutzteZeilenMA = 0;
 
-		// Die Zeilen die noch pro Fenster f�r weitere Ausgaben zu verf�gung stehen.
-		// In diesem Layout sind es 26 Zeilen die f�r die Ausgabe der Kunden �brig
+		// Die Zeilen die noch pro Fenster f?r weitere Ausgaben zu verf?gung stehen.
+		// In diesem Layout sind es 26 Zeilen die f?r die Ausgabe der Kunden ?brig
 		// sind.
 		byte zeilenZurVerfuegungMA = 23;
 
@@ -438,16 +432,16 @@ public class Shop {
 				}
 
 				// Die restlichen Zeilen in die keine Kunden mehr passen, werden mit
-				// Leerzeilen gef�llt
+				// Leerzeilen gef?llt
 				oeffMitarbeiterMA.ausgabeBlock(zeilenZurVerfuegungMA);
 				zeilenZurVerfuegungMA = 23;
 				oeffMitarbeiterMA.ausgabeZeile();
 				zurueckNichtMoeglichMA = false;
 			}
 			oeffMitarbeiterMA.trennStrich();
-			oeffMitarbeiterMA.ausgabeZeile("Auswahlm�glichkeiten");
+			oeffMitarbeiterMA.ausgabeZeile("Auswahlm?glichkeiten");
 			oeffMitarbeiterMA.trennStrich();
-			// Gibt die Auswahlm�glichkeiten auf dem Fenster aus.
+			// Gibt die Auswahlm?glichkeiten auf dem Fenster aus.
 			for (int indexW = 0; indexW < OPTIONSLEISTEN_SHOP[2].length; indexW += 2) {
 				oeffMitarbeiterMA.ausgabeZeileL(OPTIONSLEISTEN_SHOP[2][indexW], OPTIONSLEISTEN_SHOP[2][indexW + 1]);
 			}
@@ -490,7 +484,7 @@ public class Shop {
 				durchlaufDavorMA = 0;
 			}
 
-			// Vorw�rts blaettern
+			// Vorw?rts blaettern
 			else if (usrInputMA == 8) {
 				try {
 					kundenListeMA.get(indexMA);
@@ -503,12 +497,12 @@ public class Shop {
 					Shop.setWiederholung(true);
 					indexMA -= durchlaufMA;
 				}
-			} // Zur�ck blaettern
+			} // Zur?ck blaettern
 			else if (usrInputMA == 9) {
 				/*
 				 * Es werden die ersten Kunden nochmal ausgegeben. Hier muss leider mit einem
 				 * extra Boolean gearbeitet werden, welcher anzeigt, ob noch weitere Elemente
-				 * vor dem aktuellen Index angezeigt werden k�nnen. Ist die Kundenliste leer ist
+				 * vor dem aktuellen Index angezeigt werden k?nnen. Ist die Kundenliste leer ist
 				 * das nie der Fall. Deshalb wird dann dieser Boolean auf true gesetzt. Da hier
 				 * speziell mit dem Index 0 verglichen wird, anstatt mit curArtNum also den
 				 * Artikelnummern der Produkte, funktoniert die Version von blaetternKatalog
@@ -520,7 +514,7 @@ public class Shop {
 					// Index 2 ist die "Anfang der Seite erreicht" Benachrichtigung.
 					benachrichtigungMA = Shop.getBenachrichtigung(2);
 					Shop.setWiederholung(true);
-					// Bei der n�chsten Wiederholung werden die Selben Kunden angezeigt wie vor
+					// Bei der n?chsten Wiederholung werden die Selben Kunden angezeigt wie vor
 					// dem durchlauf.
 				} else if ((indexMA - durchlaufMA * 2 >= 0) && (durchlaufMA == durchlaufDavorMA)) {
 					indexMA -= durchlaufMA * 2;
@@ -534,8 +528,8 @@ public class Shop {
 
 			// falscher Input
 			else {
-				// Falls usrInput eine andere Zahl als m�glich oder ung�ltig ist,
-				// gibt getUsrInput(...) Integer.MAX_VALUE zur�ck (siehe
+				// Falls usrInput eine andere Zahl als m?glich oder ung?ltig ist,
+				// gibt getUsrInput(...) Integer.MAX_VALUE zur?ck (siehe
 				// BenutzerEingabe.getUsrInput). Ist
 				// dies der Fall,
 				// wird der else Zweig durchlaufen.
@@ -566,32 +560,15 @@ public class Shop {
 		return shopKatalog;
 	}
 
-	public static void setShopKatalog(Katalog shopKatalog) {
-		Shop.shopKatalog = shopKatalog;
-	}
-
-	public static String[][] getOptionsleistenShop() {
-		return OPTIONSLEISTEN_SHOP;
-	}
-
 	public static Warenkorb getShopWarenkorb() {
 		return shopWarenkorb;
-	}
-
-	public static void setShopWarenkorb(Warenkorb shopWarenkorb) {
-		Shop.shopWarenkorb = shopWarenkorb;
 	}
 
 	public static Kundenverwaltung getShopKundenverwaltung() {
 		return shopKundenverwaltung;
 	}
 
-	public static void setShopKundenverwaltung(Kundenverwaltung shopKundenverwaltung) {
-		Shop.shopKundenverwaltung = shopKundenverwaltung;
-	}
-
 	public static boolean isLadeSaves() {
 		return ladeSaves;
 	}
-
 }

@@ -23,11 +23,11 @@ public class Katalog {
 	 *  
 	 *  @author Kaleb Muench
 	 */
-	private static final String[] OPTIONSLEISTEN_KATALOG = {"1. Katalog Men�:",
-			"Um zum Katalog Men� zu kommen, geben Sie die 1 ein.", "2. In den Warenkorb legen:",
-			"Um ein Produkt in den Warenkorb zu legen, geben Sie die 2 ein.", "8. Vorw�rts:",
-			"Um zur n�chsten Seite zu bl�ttern, geben Sie die 8 ein.", "9. Zur�ck:",
-			"Um zur�ck zubl�ttern, geben Sie 9 ein. " };
+	private static final String[] OPTIONSLEISTEN_KATALOG = {"1. Katalog Menü:",
+			"Um zum Katalog Menü zu kommen, geben Sie die 1 ein.", "2. In den Warenkorb legen:",
+			"Um ein Produkt in den Warenkorb zu legen, geben Sie die 2 ein.", "8. Vorwärts:",
+			"Um zur nächsten Seite zu blättern, geben Sie die 8 ein.", "9. Zurück:",
+			"Um zurück zub blättern, geben Sie 9 ein. " };
 
 	/**
 	 * ### fuelleKatalog ###
@@ -154,7 +154,7 @@ public class Katalog {
 
 				blaetternKatalog.ausgabeZeile();
 				blaetternKatalog.trennStrich();
-				blaetternKatalog.ausgabeZeile("Auswahlm�glichkeiten:");
+				blaetternKatalog.ausgabeZeile("Auswahlmöglichkeiten:");
 				blaetternKatalog.trennStrich();
 				// Gibt die Auswahlm�glichkeiten auf dem Fenster aus.
 				for (int indexK = 0; indexK < OPTIONSLEISTEN_KATALOG.length; indexK += 2) {

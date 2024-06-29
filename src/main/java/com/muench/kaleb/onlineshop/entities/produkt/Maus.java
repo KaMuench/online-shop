@@ -83,7 +83,7 @@ public class Maus extends Zubehoer {
 	 */
 	@Override
 	public String toDesignFormat() {
-		return "Name;" + "Maus " + getProduktname() + ";Marke;" + getMarke() + ";Artikelnummer;" + getArtikelnummer() + ";Anschluss;" + getSignal() + ";Aufl�sung;" + getAufloesung() + ";Preis;" + getPreis() + "�;Auf Lager;" + getAnzahl();
+		return "Name;" + "Maus " + getProduktname() + ";Marke;" + getMarke() + ";Artikelnummer;" + getArtikelnummer() + ";Anschluss;" + getSignal() + ";Auflösung;" + getAufloesung() + ";Preis;" + getPreis() + "€;Auf Lager;" + getAnzahl();
 	}
 
 	/*

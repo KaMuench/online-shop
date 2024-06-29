@@ -271,8 +271,8 @@ public class Warenkorb {
 	/**
 	 * ### zeigeObjekt ###
 	 * 
-	 * Diese Methode ist daf�r da, Objekte als String auf der Konsole auszugeben.
-	 * Diese Objekte werden im Design Format ausgegeben. Die Objekte m�ssen zuvor
+	 * Diese Methode ist dafür da, Objekte als String auf der Konsole auszugeben.
+	 * Diese Objekte werden im Design Format ausgegeben. Die Objekte müssen zuvor
 	 * das Interface "AusgabenLayout" implementieren und die Methode
 	 * "toDesignFormat" ebenfalls ausimplementieren.
 	 * 
@@ -280,9 +280,9 @@ public class Warenkorb {
 	 * @param imKatalog Soll das Produkt im Katalog ausgegeben werden steht bei
 	 *                  Anzahl "Auf lager", ansonsten "Anzahl"
 	 * 
-	 * @return byte Gibt die Anzahl der Zeilen zur�ck die genutzt wurden um das
+	 * @return byte Gibt die Anzahl der Zeilen zurück die genutzt wurden um das
 	 *         Objekt auf der Konsole auszugeben. Dieser Return Wert kann genutzt
-	 *         werden, um zu �berpr�fen ob ein neues Fenster begonnen werden muss
+	 *         werden, um zu überprüfen ob ein neues Fenster begonnen werden muss
 	 *         oder nicht.
 	 */
 	public static byte zeigeProdukt(AusgabenLayout produkt, boolean imKatalog) {
@@ -295,7 +295,7 @@ public class Warenkorb {
 			array[array.length - 2] = "Anzahl";
 		}
 
-		// Gibt das Objekt als String in Zeilenlayout "ausgabeZuweisung" zur�ck
+		// Gibt das Objekt als String in Zeilenlayout "ausgabeZuweisung" zurück
 		for (int i = 0; i < array.length; i += 4) {
 			if (!(i + 4 > (array.length))) {
 				window.ausgabeZuweisung(array[i] + ":", array[i + 1], array[i + 2] + ":", array[i + 3]);

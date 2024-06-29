@@ -44,8 +44,8 @@ public class Smartphone extends Geraete{
 
 		return "Name;" + "Smartphone " + getProduktname() + ";Marke;" +  ";Artikelnummer;" + getArtikelnummer() + ";RAM;" + getRam() + " GB;Fest. Speicher;"
 				+ getFestplSpeicher() + " GB;CPU;" + getCpu() + ";GPU;" + getGpu() + ";Laufwerk;" + getLaufwerk()
-				+ ";Kamera;" + getKamera() + ";Displaygr��e;" + getDisplaygroesse() + ";Preis;" + getPreis()
-				+ " �;Auf Lager;" + getAnzahl();
+				+ ";Kamera;" + getKamera() + ";Displaygröße;" + getDisplaygroesse() + ";Preis;" + getPreis()
+				+ " €;Auf Lager;" + getAnzahl();
 
 	}
 	

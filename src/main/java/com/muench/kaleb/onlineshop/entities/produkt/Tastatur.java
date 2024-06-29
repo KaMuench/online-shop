@@ -76,7 +76,7 @@ public class Tastatur extends Zubehoer {
 	 */
 	@Override
 	public String toDesignFormat() {
-		return "Name;" + "Tastatur" + getProduktname() + ";Marke;" + getMarke() + ";Artikelnummer;" + getArtikelnummer() + ";Anschluss;" + getSignal() + ";Layout;" + getBelegung() + ";Preis;" + getPreis() + ";Auf Lager;" + getAnzahl();
+		return "Name;" + "Tastatur" + getProduktname() + ";Marke;" + getMarke() + ";Artikelnummer;" + getArtikelnummer() + ";Anschluss;" + getSignal() + ";Layout;" + getBelegung() + ";Preis;" + getPreis() + "€;Auf Lager;" + getAnzahl();
 	}
 	
 	/*

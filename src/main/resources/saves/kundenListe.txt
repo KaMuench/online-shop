@@ -1,7 +1,7 @@
 Bauer;Alex;01022001;Ahornstrasse 9;71234;Nuertingen;12345678;kleinAlex;false;
-Stein;Michael;11031999;Hauptstrasse 5;82234;Frankfurt;87654321;großAlex;null;
-Müller;Levin;22022002;Esslingerstrasse 32;71534;Esslingen;1234562;Peternor;null;
+Stein;Michael;11031999;Hauptstrasse 5;82234;Frankfurt;87654321;groï¿½Alex;null;
+Mï¿½ller;Levin;22022002;Esslingerstrasse 32;71534;Esslingen;1234562;Peternor;null;
 Parker;Peter;20111990;Grove-Street 123;23233;Flohloch;spiderman;spidy1990;false;
-Lee;Tom;06051976;Topfgasse 1;87865;Münzhausen;12345678;XuVoLee;null;
+Lee;Tom;06051976;Topfgasse 1;87865;Mï¿½nzhausen;12345678;XuVoLee;null;
 Leinsen;Marta;21101990;Tanzschule 12;71234;Dendorf;12345678;marta2020;false;
-Münch;Kaleb;30052000;Leeb-Yafe 30;99983;Jerusalem;13579;kalebM;false;
+Mï¿½nch;Kaleb;30052000;Leeb-Yafe 30;99983;Jerusalem;13579;kalebM;false;

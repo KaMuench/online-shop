@@ -65,7 +65,7 @@ public class Display extends Zubehoer {
 	 */
 	@Override
 	public String toString() {
-		return "Display [groe�e=" + groesse + ", reaktionsZeit=" + reaktionsZeit + ", hertz=" + hertz + ", toString() ="
+		return "Display [groeße=" + groesse + ", reaktionsZeit=" + reaktionsZeit + ", hertz=" + hertz + ", toString() ="
 				+ super.toString() + "]";
 	}
 	
@@ -74,7 +74,7 @@ public class Display extends Zubehoer {
 	 */
 	@Override
 	public String toDesignFormat() {
-		return "Name;" + "Display " + getProduktname() + ";Marke;" + getMarke() + ";Artikelnummer;" + getArtikelnummer() + ";Gr��e;" + getGroesse() + ";Reaktionszeit;" + getReaktionsZeit() + ";Preis;" + getPreis() + " �;Auf Lager;" + getAnzahl();
+		return "Name;" + "Display " + getProduktname() + ";Marke;" + getMarke() + ";Artikelnummer;" + getArtikelnummer() + ";Gr��e;" + getGroesse() + ";Reaktionszeit;" + getReaktionsZeit() + ";Preis;" + getPreis() + " €;Auf Lager;" + getAnzahl();
 	}
 
 	@Override
